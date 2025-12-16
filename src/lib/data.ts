@@ -1,0 +1,242 @@
+const data = {
+  symptoms: {
+    fever: {
+      hindi: 'बुखार',
+      english: 'Fever',
+      conditions: [
+        'Acute Viral Fever / तीव्र वायरल बुखार',
+        'Malaria / मलेरिया',
+        'Dengue / डेंगू',
+        'Typhoid / टाइफाइड',
+      ],
+      department: 'General Medicine / सामान्य चिकित्सा',
+    },
+
+    high_fever: {
+      hindi: 'तेज बुखार',
+      english: 'High Fever',
+      conditions: [
+        'Dengue / डेंगू',
+        'Typhoid / टाइफाइड',
+        'Heat Stroke / लू लगना',
+      ],
+      department: 'General Medicine / सामान्य चिकित्सा',
+    },
+
+    chills: {
+      hindi: 'ठंड लगना',
+      english: 'Chills',
+      conditions: ['Malaria / मलेरिया', 'Viral Fever / वायरल बुखार'],
+      department: 'General Medicine / सामान्य चिकित्सा',
+    },
+
+    cough: {
+      hindi: 'खांसी',
+      english: 'Cough',
+      conditions: ['Respiratory Infection / श्वसन संक्रमण', 'Asthma / दमा'],
+      department: 'Pulmonology / फेफड़े विभाग',
+    },
+
+    chronic_cough: {
+      hindi: 'लगातार खांसी',
+      english: 'Chronic Cough',
+      conditions: ['Tuberculosis (TB) / तपेदिक'],
+      department: 'Pulmonology / फेफड़े विभाग',
+    },
+
+    blood_cough: {
+      hindi: 'खांसी में खून',
+      english: 'Coughing Blood',
+      conditions: ['Tuberculosis (TB) / तपेदिक', 'Severe Lung Infection'],
+      department: 'Pulmonology / फेफड़े विभाग',
+    },
+
+    breathlessness: {
+      hindi: 'सांस फूलना',
+      english: 'Breathlessness',
+      conditions: [
+        'Asthma / दमा',
+        'Pneumonia / निमोनिया',
+        'Heart Disease / हृदय रोग',
+      ],
+      department: 'Pulmonology / फेफड़े विभाग',
+    },
+
+    chest_pain: {
+      hindi: 'सीने में दर्द',
+      english: 'Chest Pain',
+      conditions: ['Heart Disease / हृदय रोग', 'Acidity / एसिडिटी'],
+      department: 'Cardiology / हृदय विभाग',
+    },
+
+    palpitations: {
+      hindi: 'दिल तेज धड़कना',
+      english: 'Rapid Heartbeat',
+      conditions: ['Heart Rhythm Disorder', 'Anxiety / घबराहट'],
+      department: 'Cardiology / हृदय विभाग',
+    },
+
+    sudden_weakness: {
+      hindi: 'अचानक कमजोरी',
+      english: 'Sudden Weakness',
+      conditions: ['Stroke / स्ट्रोक'],
+      department: 'Neurology / तंत्रिका विभाग',
+    },
+
+    paralysis: {
+      hindi: 'शरीर के एक हिस्से में लकवा',
+      english: 'Paralysis',
+      conditions: ['Stroke / स्ट्रोक'],
+      department: 'Neurology / तंत्रिका विभाग',
+    },
+
+    slurred_speech: {
+      hindi: 'बोलने में परेशानी',
+      english: 'Slurred Speech',
+      conditions: ['Stroke / स्ट्रोक'],
+      department: 'Neurology / तंत्रिका विभाग',
+    },
+
+    headache: {
+      hindi: 'सिरदर्द',
+      english: 'Headache',
+      conditions: ['Migraine / माइग्रेन', 'Viral Fever / वायरल बुखार'],
+      department: 'General Medicine / सामान्य चिकित्सा',
+    },
+
+    severe_headache: {
+      hindi: 'तेज सिरदर्द',
+      english: 'Severe Headache',
+      conditions: ['Meningitis', 'Severe Migraine'],
+      department: 'Neurology / तंत्रिका विभाग',
+    },
+
+    dizziness: {
+      hindi: 'चक्कर आना',
+      english: 'Dizziness',
+      conditions: ['Low BP / कम रक्तचाप', 'Dehydration / पानी की कमी'],
+      department: 'General Medicine / सामान्य चिकित्सा',
+    },
+
+    vomiting: {
+      hindi: 'उल्टी',
+      english: 'Vomiting',
+      conditions: ['Food Poisoning', 'Gastroenteritis'],
+      department: 'General Medicine / सामान्य चिकित्सा',
+    },
+
+    diarrhea: {
+      hindi: 'दस्त',
+      english: 'Diarrhea',
+      conditions: ['Acute Diarrheal Disease / तीव्र दस्त'],
+      department: 'General Medicine / सामान्य चिकित्सा',
+    },
+
+    abdominal_pain: {
+      hindi: 'पेट दर्द',
+      english: 'Abdominal Pain',
+      conditions: ['Gastritis', 'Typhoid / टाइफाइड'],
+      department: 'General Medicine / सामान्य चिकित्सा',
+    },
+
+    loss_of_appetite: {
+      hindi: 'भूख न लगना',
+      english: 'Loss of Appetite',
+      conditions: ['Liver Disease', 'Infection'],
+      department: 'General Medicine / सामान्य चिकित्सा',
+    },
+
+    weight_loss: {
+      hindi: 'वजन कम होना',
+      english: 'Weight Loss',
+      conditions: ['Tuberculosis (TB)', 'Malnutrition / कुपोषण'],
+      department: 'General Medicine / सामान्य चिकित्सा',
+    },
+
+    yellow_eyes: {
+      hindi: 'आंखों में पीलापन',
+      english: 'Yellow Eyes',
+      conditions: ['Jaundice / पीलिया'],
+      department: 'General Medicine / सामान्य चिकित्सा',
+    },
+
+    dark_urine: {
+      hindi: 'गहरा पेशाब',
+      english: 'Dark Urine',
+      conditions: ['Jaundice / पीलिया'],
+      department: 'General Medicine / सामान्य चिकित्सा',
+    },
+
+    body_ache: {
+      hindi: 'शरीर दर्द',
+      english: 'Body Ache',
+      conditions: ['Viral Fever / वायरल बुखार', 'Dengue / डेंगू'],
+      department: 'General Medicine / सामान्य चिकित्सा',
+    },
+
+    joint_pain: {
+      hindi: 'जोड़ों का दर्द',
+      english: 'Joint Pain',
+      conditions: ['Arthritis / गठिया', 'Dengue / डेंगू'],
+      department: 'Orthopedics / हड्डी रोग',
+    },
+
+    heat_exhaustion: {
+      hindi: 'लू लगना',
+      english: 'Heat Stroke',
+      conditions: ['Heat Stroke / लू लगना'],
+      department: 'Emergency / आपातकाल',
+    },
+
+    excessive_sweating: {
+      hindi: 'अधिक पसीना',
+      english: 'Excessive Sweating',
+      conditions: ['Heat Exhaustion', 'Anxiety'],
+      department: 'General Medicine / सामान्य चिकित्सा',
+    },
+
+    seizures: {
+      hindi: 'दौरे पड़ना',
+      english: 'Seizures',
+      conditions: ['Epilepsy / मिर्गी'],
+      department: 'Neurology / तंत्रिका विभाग',
+    },
+
+    fatigue: {
+      hindi: 'अत्यधिक थकान',
+      english: 'Extreme Fatigue',
+      conditions: ['Anemia / एनीमिया'],
+      department: 'General Medicine / सामान्य चिकित्सा',
+    },
+
+    pale_skin: {
+      hindi: 'पीला चेहरा',
+      english: 'Pale Skin',
+      conditions: ['Anemia / एनीमिया'],
+      department: 'General Medicine / सामान्य चिकित्सा',
+    },
+
+    frequent_urination: {
+      hindi: 'बार-बार पेशाब',
+      english: 'Frequent Urination',
+      conditions: ['Diabetes / मधुमेह'],
+      department: 'General Medicine / सामान्य चिकित्सा',
+    },
+
+    excessive_thirst: {
+      hindi: 'अधिक प्यास लगना',
+      english: 'Excessive Thirst',
+      conditions: ['Diabetes / मधुमेह'],
+      department: 'General Medicine / सामान्य चिकित्सा',
+    },
+  },
+
+  durations: [
+    { id: '1-2', hindi: '1-2 दिन', english: '1-2 days' },
+    { id: '3-5', hindi: '3-5 दिन', english: '3-5 days' },
+    { id: '6-10', hindi: '6-10 दिन', english: '6-10 days' },
+    { id: '10+', hindi: '10 दिन से अधिक', english: 'More than 10 days' },
+  ],
+};
+
+export default data;

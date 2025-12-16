@@ -11,7 +11,7 @@ import {
 } from 'lucide-react';
 import { useApp } from '@/context/AppContext';
 import { cn } from '@/lib/utils';
-import data from '@/lib/data.json';
+import data from '@/lib/data';
 
 const SymptomPage: React.FC = () => {
   const navigate = useNavigate();

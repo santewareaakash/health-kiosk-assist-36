@@ -13,7 +13,7 @@ import {
   RefreshCw,
 } from 'lucide-react';
 import { useApp } from '@/context/AppContext';
-import data from '@/lib/data.json';
+import data from '@/lib/data';
 
 const GuidancePage: React.FC = () => {
   const navigate = useNavigate();
