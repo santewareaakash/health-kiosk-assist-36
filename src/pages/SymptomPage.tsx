@@ -11,6 +11,7 @@ import {
 } from 'lucide-react';
 import { useApp } from '@/context/AppContext';
 import { cn } from '@/lib/utils';
+import data from '@/lib/data.json';
 
 const SymptomPage: React.FC = () => {
   const navigate = useNavigate();
@@ -21,6 +22,15 @@ const SymptomPage: React.FC = () => {
   const [isAnalyzing, setIsAnalyzing] = useState(false);
   const [symptomDropdownOpen, setSymptomDropdownOpen] = useState(false);
   const [durationDropdownOpen, setDurationDropdownOpen] = useState(false);
+
+  // 🔹 Derived from data.json (UI unchanged)
+  const SYMPTOMS = Object.entries(data.symptoms).map(([id, value]) => ({
+    id,
+    hindi: value.hindi,
+    english: value.english,
+  }));
+
+  const DURATIONS = data.durations;
 
   const t = {
     hindi: {
@@ -49,109 +59,6 @@ const SymptomPage: React.FC = () => {
 
   const text = t[language];
 
-  /**
-   * Covers top 20 common diseases in Bihar:
-   * Fever-related (Malaria, Dengue, Typhoid)
-   * TB, Pneumonia
-   * Cardiac Arrest / Heart Disease
-   * Stroke
-   * Diarrhea & dehydration
-   * Asthma / COPD
-   * Diabetes
-   * Jaundice / Hepatitis
-   * Heat stroke
-   * Anemia
-   * Epilepsy
-   */
-  const SYMPTOMS = [
-    { id: 'fever', hindi: 'बुखार', english: 'Fever' },
-    { id: 'high_fever', hindi: 'तेज बुखार', english: 'High Fever' },
-    { id: 'chills', hindi: 'ठंड लगना', english: 'Chills' },
-
-    { id: 'cough', hindi: 'खांसी', english: 'Cough' },
-    {
-      id: 'chronic_cough',
-      hindi: 'लगातार खांसी',
-      english: 'Chronic Cough (TB)',
-    },
-    { id: 'blood_cough', hindi: 'खांसी में खून', english: 'Coughing Blood' },
-
-    { id: 'breathlessness', hindi: 'सांस फूलना', english: 'Breathlessness' },
-    { id: 'chest_pain', hindi: 'सीने में दर्द', english: 'Chest Pain' },
-    { id: 'palpitations', hindi: 'दिल तेज धड़कना', english: 'Rapid Heartbeat' },
-
-    {
-      id: 'sudden_weakness',
-      hindi: 'अचानक कमजोरी',
-      english: 'Sudden Weakness (Stroke)',
-    },
-    {
-      id: 'paralysis',
-      hindi: 'शरीर के एक हिस्से में लकवा',
-      english: 'Paralysis',
-    },
-    {
-      id: 'slurred_speech',
-      hindi: 'बोलने में परेशानी',
-      english: 'Slurred Speech',
-    },
-
-    { id: 'headache', hindi: 'सिरदर्द', english: 'Headache' },
-    { id: 'severe_headache', hindi: 'तेज सिरदर्द', english: 'Severe Headache' },
-    { id: 'dizziness', hindi: 'चक्कर आना', english: 'Dizziness' },
-
-    { id: 'vomiting', hindi: 'उल्टी', english: 'Vomiting' },
-    { id: 'diarrhea', hindi: 'दस्त', english: 'Diarrhea' },
-    { id: 'abdominal_pain', hindi: 'पेट दर्द', english: 'Abdominal Pain' },
-
-    {
-      id: 'loss_of_appetite',
-      hindi: 'भूख न लगना',
-      english: 'Loss of Appetite',
-    },
-    { id: 'weight_loss', hindi: 'वजन कम होना', english: 'Weight Loss' },
-
-    {
-      id: 'yellow_eyes',
-      hindi: 'आंखों में पीलापन',
-      english: 'Yellow Eyes (Jaundice)',
-    },
-    { id: 'dark_urine', hindi: 'गहरा पेशाब', english: 'Dark Urine' },
-
-    { id: 'body_ache', hindi: 'शरीर दर्द', english: 'Body Ache' },
-    { id: 'joint_pain', hindi: 'जोड़ों का दर्द', english: 'Joint Pain' },
-
-    { id: 'heat_exhaustion', hindi: 'लू लगना', english: 'Heat Stroke' },
-    {
-      id: 'excessive_sweating',
-      hindi: 'अधिक पसीना',
-      english: 'Excessive Sweating',
-    },
-
-    { id: 'seizures', hindi: 'दौरे पड़ना', english: 'Seizures (Epilepsy)' },
-
-    { id: 'fatigue', hindi: 'अत्यधिक थकान', english: 'Extreme Fatigue' },
-    { id: 'pale_skin', hindi: 'पीला चेहरा', english: 'Pale Skin (Anemia)' },
-
-    {
-      id: 'frequent_urination',
-      hindi: 'बार-बार पेशाब',
-      english: 'Frequent Urination (Diabetes)',
-    },
-    {
-      id: 'excessive_thirst',
-      hindi: 'अधिक प्यास लगना',
-      english: 'Excessive Thirst',
-    },
-  ];
-
-  const DURATIONS = [
-    { id: '1-2', hindi: '1-2 दिन', english: '1-2 days' },
-    { id: '3-5', hindi: '3-5 दिन', english: '3-5 days' },
-    { id: '6-10', hindi: '6-10 दिन', english: '6-10 days' },
-    { id: '10+', hindi: '10 दिन से अधिक', english: 'More than 10 days' },
-  ];
-
   const getSymptomLabel = (id: string) => {
     const symptom = SYMPTOMS.find((s) => s.id === id);
     if (!symptom) return '';
@@ -175,7 +82,7 @@ const SymptomPage: React.FC = () => {
     await new Promise((resolve) => setTimeout(resolve, 1500));
 
     const triageData = {
-      symptoms: [selectedSymptom],
+      symptoms: [selectedSymptom], // ✅ IDs stay consistent
       duration,
       severity: 'moderate',
     };
@@ -260,7 +167,7 @@ const SymptomPage: React.FC = () => {
               </div>
             </div>
 
-            {/* Duration */}
+            {/* Duration Dropdown */}
             <div className="mb-10">
               <label className="kiosk-label flex items-center gap-2 mb-3">
                 <Clock className="w-5 h-5 text-primary" />
